@@ -1,7 +1,16 @@
 /*
  * Create a list that holds all of your cards
  */
-
+let listOfCards = [
+  fa-diamond,
+  fa-paper-plane-o,
+  fa-anchor,
+  fa-bolt,
+  fa-cube,
+  fa-bicycle,
+  fa-bomb,
+  fa-leaf,
+  ];
 
 /*
  * Display the cards on the page
