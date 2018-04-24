@@ -22,15 +22,9 @@ let listOfCards = [ // cards array for
 
   let cardsOpen = []; // array for cards flipped to be placed into.
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-function createCards() { //function to create card and append to the deck.
+
+function createCards() { //function to shuffle cards and append to the deck.
   let deck = document.querySelector('.deck');
-  deck.innerHTML='';
   listOfCards = shuffle(listOfCards);
   for(let i = 0 ; i < listOfCards.length ; i++) {
     let HTMLToAdd = '<li class="card"><i class="fa ' +listOfCards[i]+ '"></i></li>';
@@ -53,7 +47,7 @@ function shuffle(array) {
     return array;
 }
 
-
+createCards();
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
