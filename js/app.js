@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-let listOfCards = [
+let listOfCards = [ // cards array for
   fa-diamond,
   fa-paper-plane-o,
   fa-anchor,
@@ -18,6 +18,19 @@ let listOfCards = [
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+function appendCard(card){
+  const htmlTextToAdd = '<h2>Skydiving is fun!</h2>';
+  deck.insertAdjacentHTML('afterend', htmlTextToAdd);
+}
+
+ function createCards(){
+  listOfCards = shuffle(listOfCards);
+  for(let i = 0 ; i < 2; i++) {
+    let deck = document.querySelector('#deck');
+    listOfCards.forEach(appendCard)
+  }
+ }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
