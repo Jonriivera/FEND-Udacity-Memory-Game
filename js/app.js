@@ -3,15 +3,25 @@
  */
 let listOfCards = [ // cards array for
   fa-diamond,
+  fa-diamond,
+  fa-paper-plane-o,
   fa-paper-plane-o,
   fa-anchor,
+  fa-anchor,
+  fa-bolt,
   fa-bolt,
   fa-cube,
+  fa-cube,
+  fa-bicycle,
   fa-bicycle,
   fa-bomb,
+  fa-bomb,
+  fa-leaf,
   fa-leaf,
   ];
 
+  let cardsOpen = []; // array for cards flipped to be placed into.
+  let cardsFlipped = 0; // Amount of cards flipped used later for ranking system.
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -19,17 +29,7 @@ let listOfCards = [ // cards array for
  *   - add each card's HTML to the page
  */
 
-function appendCard(card){
-  const htmlTextToAdd = '<h2>Skydiving is fun!</h2>';
-  deck.insertAdjacentHTML('afterend', htmlTextToAdd);
-}
 
- function createCards(){
-  listOfCards = shuffle(listOfCards);
-  for(let i = 0 ; i < 2; i++) {
-    let deck = document.querySelector('#deck');
-    listOfCards.forEach(appendCard)
-  }
  }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -47,7 +47,9 @@ function shuffle(array) {
     return array;
 }
 
+function createBoard () {
 
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
