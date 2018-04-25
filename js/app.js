@@ -20,7 +20,7 @@ let listOfCards = [ // cards array for
   'fa-leaf',
   ];
 
-  let cardsOpen = []; // array for cards flipped to be placed into.
+let cardsOpen = []; // array for cards flipped to be placed into.
 
 
 function createCards() { //function to shuffle cards and append to the deck.
@@ -47,8 +47,19 @@ function shuffle(array) {
     return array;
 }
 
+let card = document.querySelectorAll('.card');
+
+function showCard(){ //Funtion to show card
+  event.target.className += ' open show';
+}
+
+document.addEventListener('click', function(event) { // Event listener for click on card
+  showCard();
+});
+
 createCards();
 /*
+
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
