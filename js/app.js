@@ -47,19 +47,35 @@ function shuffle(array) {
     return array;
 }
 
-
-function showCard() { //Funtion to show card
-  event.target.className += ' open show';
-}
-
 let cardsOpen = []; // array for cards flipped to be placed into
 let cardsMatched = []; //array for matched cards to be pushed into
 let cardsUnmatched = []; //array for unmatched cards to be pushed into
+
+
+function flipCards() {
+  if(cardsUnmatched.length === 1) {
+  cardsUnmatched[0][0].className = 'card';
+  cardsUnmatched[0][1].className = 'card';
+  cardsUnmatched = [];
+  }
+}
+
+function showCard() { //Funtion to show card
+  event.target.className += ' open show';
+  flipCards();
+}
 
 function matchedCards() { // function to add what matched cards do
   cardsOpen[0].className = 'card match';
   cardsOpen[1].className = 'card match';
   cardsMatched.push(cardsOpen);
+  cardsOpen = [];
+}
+
+function unmatchedCards() { // function to add what unmatched cards do
+  cardsOpen[1].className = 'card unmatched';
+  cardsOpen[0].className = 'card unmatched';
+  cardsUnmatched.push(cardsOpen);
   cardsOpen = [];
 }
 
