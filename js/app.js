@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-let listOfCards = [ // cards array for
+let listOfCards = [ // cards array for symbols
   'fa-diamond',
   'fa-diamond',
   'fa-paper-plane-o',
@@ -20,8 +20,11 @@ let listOfCards = [ // cards array for
   'fa-leaf',
   ];
 
+let moveCounter = 0;
+
+let deck = document.querySelector('.deck');
+
 function createCards() { //function to shuffle cards and append to the deck.
-  let deck = document.querySelector('.deck');
   listOfCards = shuffle(listOfCards);
   for(let i = 0 ; i < listOfCards.length ; i++) {
     let HTMLToAdd = '<li class="card"><i class="fa ' +listOfCards[i]+ '"></i></li>';
@@ -44,27 +47,26 @@ function shuffle(array) {
     return array;
 }
 
-let card = document.querySelectorAll('.card');
 
 function showCard() { //Funtion to show card
   event.target.className += ' open show';
 }
 
-let cardsOpen = []; // array for cards flipped to be placed into.
+let cardsOpen = []; // array for cards flipped to be placed into
+let cardsMatched = []; //array for matched cards to be pushed into
+let cardsUnmatched = []; //array for unmatched cards to be pushed into
 
 function matchedCards() { // function to add what matched cards do
-
-}
-
-function unmatchedCards() { // function to add what unmatched cards do
-
+  cardsOpen[0].className = 'card match';
+  cardsOpen[1].className = 'card match';
+  cardsMatched.push(cardsOpen);
+  cardsOpen = [];
 }
 
 function testCards() { // Function to add cards to array and to compare them
-  let opened = event.target.innerHTML;
-  cardsOpen.push(opened);
+  cardsOpen.push(event.target);
   if(cardsOpen.length === 2) {
-    if(cardsOpen[0] == cardsOpen[1]){
+    if(cardsOpen[0].innerHTML == cardsOpen[1].innerHTML) {
       matchedCards();
     } else {
       unmatchedCards();
@@ -73,7 +75,8 @@ function testCards() { // Function to add cards to array and to compare them
 }
 
 document.addEventListener("click", function(event) { // Event listener for click on card
-  if(event.target && event.target.className === "card"){
+  if(event.target && event.target.className === "card") {
+  moveCounter++;
   showCard();
   testCards();
   }
@@ -85,8 +88,8 @@ createCards();
  * [done] set up the event listener for a card. If a card is clicked:
  *  [done]- display the card's symbol (put this functionality in another function that you call from this one)
  *  - [done] add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ *  - [done]if the list already has another card, check to see if the two cards match
+ *    + [done]if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
