@@ -110,6 +110,7 @@ function testCards() { // Function to add cards to array and to compare them
 document.addEventListener("click", function(event) { // Event listener for click on card
   if(event.target && event.target.className === "card") {
   moveCounter++;
+  document.querySelector('.moves').innerHTML = moveCounter;
   showCard();
   testCards();
   }
