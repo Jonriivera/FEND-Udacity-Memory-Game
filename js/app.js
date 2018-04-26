@@ -21,9 +21,20 @@ let listOfCards = [ // cards array for symbols
   ];
 
 let moveCounter = 0;
+let starCount = 3;
 
+const stars = document.getElementsByClassName('stars');
 
-let stars = document.getElementsByClassName('stars');
+function getRank(){
+  if(moveCounter >= 20 && moveCounter < 30) {
+    starCount--;
+  } else if (moveCounter >= 30 && moveCounter < 40) {
+    starCount = 1;
+  } else if (moveCounter >= 40){
+    starCount = 0;
+  }
+}
+
 
 let deck = document.querySelector('.deck');
 
@@ -72,7 +83,8 @@ function matchedCards() { // function to add what matched cards do
   cardsMatched.push(cardsOpen[1]);
   cardsOpen = [];
   if (cardsMatched.length === 16){
-    alert('You won with ' +moveCounter+ 'clicks!');
+    getRank();
+    alert('You won with ' +moveCounter+ ' clicks!\nYou got ' +starCount+ " stars!!");
   }
 }
 
