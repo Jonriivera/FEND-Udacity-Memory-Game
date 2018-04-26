@@ -53,18 +53,14 @@ function shuffle(array) {
 let cardsOpen = []; // array for cards flipped to be placed into
 let cardsMatched = []; //array for matched cards to be pushed into
 let cardsUnmatched = []; //array for unmatched cards to be pushed into
-let stars = document.getElementsByClassName('Stars');
 
 function flipCards() {
   if(cardsUnmatched.length === 1) {
   cardsUnmatched[0][0].className = 'card';
   cardsUnmatched[0][1].className = 'card';
   cardsUnmatched = [];
-} else if(cardsMatched.length === 7 ) {
-    alert('you win');
   }
 }
-
 function showCard() { //Funtion to show card
   event.target.className += ' open show';
 }
@@ -72,9 +68,12 @@ function showCard() { //Funtion to show card
 function matchedCards() { // function to add what matched cards do
   cardsOpen[0].className = 'card match';
   cardsOpen[1].className = 'card match';
-  cardsMatched.push(cardsOpen);
+  cardsMatched.push(cardsOpen[0]);
+  cardsMatched.push(cardsOpen[1]);
   cardsOpen = [];
-
+  if (cardsMatched.length === 16){
+    alert('You won with ' +moveCounter+ 'clicks!');
+  }
 }
 
 function unmatchedCards() { // function to add what unmatched cards do
