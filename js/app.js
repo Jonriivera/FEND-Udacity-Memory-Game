@@ -22,6 +22,9 @@ let listOfCards = [ // cards array for symbols
 
 let moveCounter = 0;
 
+
+let stars = document.getElementsByClassName('stars');
+
 let deck = document.querySelector('.deck');
 
 function createCards() { //function to shuffle cards and append to the deck.
@@ -50,19 +53,20 @@ function shuffle(array) {
 let cardsOpen = []; // array for cards flipped to be placed into
 let cardsMatched = []; //array for matched cards to be pushed into
 let cardsUnmatched = []; //array for unmatched cards to be pushed into
-
+let stars = document.getElementsByClassName('Stars');
 
 function flipCards() {
   if(cardsUnmatched.length === 1) {
   cardsUnmatched[0][0].className = 'card';
   cardsUnmatched[0][1].className = 'card';
   cardsUnmatched = [];
+} else if(cardsMatched.length === 7 ) {
+    alert('you win');
   }
 }
 
 function showCard() { //Funtion to show card
   event.target.className += ' open show';
-  flipCards();
 }
 
 function matchedCards() { // function to add what matched cards do
@@ -70,6 +74,7 @@ function matchedCards() { // function to add what matched cards do
   cardsOpen[1].className = 'card match';
   cardsMatched.push(cardsOpen);
   cardsOpen = [];
+
 }
 
 function unmatchedCards() { // function to add what unmatched cards do
@@ -81,6 +86,7 @@ function unmatchedCards() { // function to add what unmatched cards do
 
 function testCards() { // Function to add cards to array and to compare them
   cardsOpen.push(event.target);
+  flipCards();
   if(cardsOpen.length === 2) {
     if(cardsOpen[0].innerHTML == cardsOpen[1].innerHTML) {
       matchedCards();
@@ -106,7 +112,7 @@ createCards();
  *  - [done] add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - [done]if the list already has another card, check to see if the two cards match
  *    + [done]if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *    + [done] if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
