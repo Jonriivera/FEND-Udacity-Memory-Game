@@ -1,6 +1,3 @@
-/*
- * Create a list that holds all of your cards
- */
 let listOfCards = [ // cards array for symbols
   'fa-diamond',
   'fa-diamond',
@@ -118,14 +115,3 @@ document.addEventListener("click", function(event) { // Event listener for click
 });
 
 createCards();
-/*
-
- * [done] set up the event listener for a card. If a card is clicked:
- *  [done]- display the card's symbol (put this functionality in another function that you call from this one)
- *  - [done] add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - [done]if the list already has another card, check to see if the two cards match
- *    + [done]if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + [done] if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
