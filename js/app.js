@@ -23,18 +23,20 @@ let listOfCards = [ // cards array for symbols
 let moveCounter = 0;
 let starCount = 3;
 
-const stars = document.getElementsByClassName('stars');
 
-function getRank(){
-  if(moveCounter >= 20 && moveCounter < 30) {
+function getRank() {
+  let stars = document.querySelector('.stars');
+  if(moveCounter >= 10 && moveCounter < 13) {
+    stars.innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
     starCount--;
-  } else if (moveCounter >= 30 && moveCounter < 40) {
+  } else if (moveCounter >= 13 && moveCounter < 16) {
+    stars.innerHTML = '<li><i class="fa fa-star"></i></li>';
     starCount = 1;
-  } else if (moveCounter >= 40){
+  } else if (moveCounter >= 18) {
+    stars.innerHTML = '';
     starCount = 0;
   }
 }
-
 
 let deck = document.querySelector('.deck');
 
@@ -83,8 +85,7 @@ function matchedCards() { // function to add what matched cards do
   cardsMatched.push(cardsOpen[1]);
   cardsOpen = [];
   if (cardsMatched.length === 16){
-    getRank();
-    alert('You won with ' +moveCounter+ ' clicks!\nYou got ' +starCount+ " stars!!");
+    alert('You won with ' +moveCounter+ ' moves!\nYou got ' +starCount+ " stars!!");
   }
 }
 
@@ -98,7 +99,9 @@ function unmatchedCards() { // function to add what unmatched cards do
 function testCards() { // Function to add cards to array and to compare them
   cardsOpen.push(event.target);
   flipCards();
+  getRank();
   if(cardsOpen.length === 2) {
+    moveCounter++;
     if(cardsOpen[0].innerHTML == cardsOpen[1].innerHTML) {
       matchedCards();
     } else {
@@ -109,7 +112,6 @@ function testCards() { // Function to add cards to array and to compare them
 
 document.addEventListener("click", function(event) { // Event listener for click on card
   if(event.target && event.target.className === "card") {
-  moveCounter++;
   document.querySelector('.moves').innerHTML = moveCounter;
   showCard();
   testCards();
