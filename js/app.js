@@ -23,7 +23,6 @@ let listOfCards = [ // cards array for symbols
 let moveCounter = 0;
 let starCount = 3;
 
-
 function getRank() {
   let stars = document.querySelector('.stars');
   if(moveCounter >= 10 && moveCounter < 13) {
