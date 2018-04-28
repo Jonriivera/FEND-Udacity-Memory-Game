@@ -114,6 +114,14 @@ h1 {
     cursor: pointer;
 }
 
+
+/*Media Querries*/
+
+
+.deck {
+}
+.deck .card{
+}
 /*
  * animations use later
 

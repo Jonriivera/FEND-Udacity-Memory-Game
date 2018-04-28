@@ -17,10 +17,11 @@ let listOfCards = [ // cards array for symbols
   'fa-leaf',
   ];
 
-let moveCounter = 0;
-let starCount = 3;
+let moveCounter = 0; //Counter for how many moves made
+let starCount = 3; //Counter for star rank
+let sec = 0; //Variable to show how many seconds
 
-function getRank() {
+function getRank() { //Function to get rank and remove stars for X amount of moves
   let stars = document.querySelector('.stars');
   if(moveCounter >= 10 && moveCounter < 13) {
     stars.innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
@@ -36,8 +37,9 @@ function getRank() {
 
 let deck = document.querySelector('.deck');
 
-function createCards() { //function to shuffle cards and append to the deck.
+function createCards() { //Function to shuffle cards and append to the deck.
   listOfCards = shuffle(listOfCards);
+  timer();
   for(let i = 0 ; i < listOfCards.length ; i++) {
     let HTMLToAdd = '<li class="card"><i class="fa ' +listOfCards[i]+ '"></i></li>';
     deck.insertAdjacentHTML('beforeend', HTMLToAdd);
@@ -63,14 +65,14 @@ let cardsOpen = []; // array for cards flipped to be placed into
 let cardsMatched = []; //array for matched cards to be pushed into
 let cardsUnmatched = []; //array for unmatched cards to be pushed into
 
-function flipCards() {
+function flipCards() { //Function to flip cards after found unmatched.
   if(cardsUnmatched.length === 1) {
   cardsUnmatched[0][0].className = 'card';
   cardsUnmatched[0][1].className = 'card';
   cardsUnmatched = [];
   }
 }
-function showCard() { //Funtion to show card
+function showCard() { //Funtion to flip a card up
   event.target.className += ' open show';
 }
 
@@ -81,7 +83,7 @@ function matchedCards() { // function to add what matched cards do
   cardsMatched.push(cardsOpen[1]);
   cardsOpen = [];
   if (cardsMatched.length === 16){
-    alert('You won with ' +moveCounter+ ' moves!\nYou got ' +starCount+ " stars!!");
+    alert('You won with ' +moveCounter+ ' moves!\nYou got ' +starCount+ " stars!!\nIn " +sec+ " seconds!");
   }
 }
 
@@ -114,4 +116,12 @@ document.addEventListener("click", function(event) { // Event listener for click
   }
 });
 
-createCards();
+function timer() { //Timer function to keep track fo time elepased.
+function pad ( val ) { return val > 9 ? val : "0" + val; }
+setInterval( function(){
+    document.getElementById("seconds").innerHTML=pad(++sec%60);
+    document.getElementById("minutes").innerHTML=pad(parseInt(sec/60,10));
+}, 1000);
+}
+
+createCards(); //Origional call to add cards to deck.
