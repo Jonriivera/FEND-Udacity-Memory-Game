@@ -82,8 +82,11 @@ function matchedCards() { // function to add what matched cards do
   cardsMatched.push(cardsOpen[0]);
   cardsMatched.push(cardsOpen[1]);
   cardsOpen = [];
-  if (cardsMatched.length === 16){
-    alert('You won with ' +moveCounter+ ' moves!\nYou got ' +starCount+ " stars!!\nIn " +sec+ " seconds!");
+  if (cardsMatched.length === 16) {
+    let modal = document.querySelector('#modal');
+    let content = document.querySelector('.modal-content')
+    modal.className += ' openModal'
+    content.innerHTML = '<div>Congradulations!!</div><div>You won in ' +moveCounter+ ' moves!</div><div>You got ' +starCount+ ' stars!!</div><div>and finsihed in ' +sec+ ' seconds!</div><div>Would you like to play again?</div><input type="button" value="Play again!" onClick="window.location.reload()">';
   }
 }
 
